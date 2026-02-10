@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Вхід в адмін-панель";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center mb-4">Адмін-панель</h2>
+            
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+            
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Пароль</label>
+                    <input type="password" name="password" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Увійти</button>
+            </form>
+            
+            <p class="text-muted mt-3 text-center">Пароль для тесту: admin123</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model EventRegistration.Models.Registration
+
+<h2>Реєстрація на подію: @ViewBag.EventTitle</h2>
+<p><strong>Опис:</strong> @ViewBag.EventDescription</p>
+<p><strong>Дата:</strong> @ViewBag.EventDate</p>
+<p><strong>Локація:</strong> @ViewBag.EventLocation</p>
+
+<form asp-action="Register" method="post">
+    <input type="hidden" asp-for="EventId" value="@ViewBag.EventId" />
+
+    <div class="form-group">
+        <label for="Name">Ім’я</label>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Зареєструватися</button>
+</form>

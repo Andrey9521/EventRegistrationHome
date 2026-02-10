@@ -1,0 +1,49 @@
+﻿@model List<EventRegistration.Models.Event>
+
+<h2>Управління івентами</h2>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Admin" asp-action="CreateEvent">Створити івент</a>
+    <a class="btn-danger" asp-controller="Admin" asp-action="Logout">Вийти</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Назва</th>
+        <th>Дата</th>
+        <th>Локація</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var ev in Model)
+    {
+        <tr>
+            <td>@ev.Title</td>
+            <td>@ev.EventDate.ToString("dd.MM.yyyy HH:mm")</td>
+            <td>@ev.Location</td>
+            <td>
+                <a class="btn-primary" asp-controller="Admin" asp-action="ViewRegistrations" asp-route-eventId="@ev.Id"> Список за реєстрованих</a>
+                <a class="btn btn-sm btn-secondary" asp-controller="Event" asp-action="Register" asp-route-id="@ev.Id">Реєстрація</a>
+                <button class="btn btn-sm btn-info" onclick="copyLink(@ev.Id)">Скопіювати лінк</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts{
+    
+    <script>
+        function copyLink(eventId){
+            var url = window.location.origin + '/Event/Register/' + eventId;
+            navigator.clipboard.writeText(url).then(function(){
+                alert("Лінк скопійовано: " + url);
+            });
+        }
+    </script>
+}
+
+
+

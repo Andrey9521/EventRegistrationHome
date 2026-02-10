@@ -1,0 +1,25 @@
+﻿@model List<EventRegistration.Models.Registration>
+
+<h2>Зареєстровані учасники на "@ViewBag.EventTitle"</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Ім’я</th>
+        <th>Email</th>
+        <th>Дата реєстрації</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.UserName</td>
+            <td>@r.Email</td>
+            <td>@r.RegisteredAt.ToString("dd.MM.yyyy HH:mm")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a class="btn btn-secondary" href="/Admin/Index">Назад</a>
