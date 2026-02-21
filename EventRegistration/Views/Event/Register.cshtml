@@ -6,17 +6,34 @@
 <p><strong>Локація:</strong> @ViewBag.EventLocation</p>
 
 <form asp-action="Register" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <input type="hidden" asp-for="EventId" value="@ViewBag.EventId" />
 
     <div class="form-group">
-        <label for="Name">Ім’я</label>
+        <label asp-for="UserName">Ім’я</label>
         <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label for="Email">Email</label>
+        <label asp-for="Email">Email</label>
         <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mt-3">
+        <input asp-for="IsConfirm" class="form-check-input" />
+        <label class="form-check-label" asp-for="IsConfirm">
+            Підтверджую участь
+        </label>
+        <span asp-validation-for="IsConfirm" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary mt-3">Зареєструватися</button>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

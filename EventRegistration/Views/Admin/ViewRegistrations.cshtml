@@ -2,6 +2,15 @@
 
 <h2>Зареєстровані учасники на "@ViewBag.EventTitle"</h2>
 
+
+<form method="get" asp-controller="Admin" asp-action="ViewRegistrations">
+    <input type="hidden" name="eventId" value="@ViewBag.EventId" />
+    <div class="input-group mb-3">
+        <input type="text" name="email" class="form-control" placeholder="Введіть email для пошуку" />
+        <button type="submit" class="btn btn-primary">Пошук</button>
+    </div>
+</form>
+
 <table class="table table-bordered">
     <thead>
     <tr>

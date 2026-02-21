@@ -24,9 +24,12 @@
             <td>@ev.EventDate.ToString("dd.MM.yyyy HH:mm")</td>
             <td>@ev.Location</td>
             <td>
-                <a class="btn-primary" asp-controller="Admin" asp-action="ViewRegistrations" asp-route-eventId="@ev.Id"> Список за реєстрованих</a>
+                <a class="btn btn-success" asp-controller="Admin" asp-action="ViewRegistrations" asp-route-eventId="@ev.Id"> Список за реєстрованих</a>
                 <a class="btn btn-sm btn-secondary" asp-controller="Event" asp-action="Register" asp-route-id="@ev.Id">Реєстрація</a>
                 <button class="btn btn-sm btn-info" onclick="copyLink(@ev.Id)">Скопіювати лінк</button>
+                <a class="btn btn-sm btn-danger" asp-controller="Admin" asp-action="DeleteEvent" asp-route-eventId="@ev.Id">Видалити</a>
+                <a class="btn btn-sm btn-warning" asp-controller="Admin" asp-action="EditEvent" asp-route-eventId="@ev.Id">Редагувати</a>
+
             </td>
         </tr>
     }

@@ -24,9 +24,21 @@ public class EventController : Controller
     [HttpPost]
     public IActionResult Register(Registration registration)
     {
+        if (!registration.IsConfirm)
+        {
+            ModelState.AddModelError("IsConfirm", "Ви повинні підтвердити участь, щоб завершити реєстрацію.");
+            
+            ViewBag.EventTitle = "Назва події";
+            ViewBag.EventDescription = "Опис події";
+            ViewBag.EventDate = DateTime.Now;
+            ViewBag.EventLocation = "Локація";
+            return View(registration);
+        }
+
         registration.Id = DataStore.GetNextRegistrationId();
         registration.RegisteredAt = DateTime.Now;
         DataStore.Registrations.Add(registration);
+
         return View("Success");
     }
 }
